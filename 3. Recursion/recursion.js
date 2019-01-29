@@ -43,14 +43,33 @@ function factorial(number){
 
 
 //5. Write a function 'RecursiveExponent' that takes two arguments base, and expo, recursively returns exponent value of the base.
+function RecursiveExponent(base, expo, value = 1){
+  if(expo >= 1){
+    value *= base;
+    return RecursiveExponent(base, expo-1, value)
+  } else return value;
+}
 
 
 
 //6. Write a function 'recursiveMultiplier' that takes two arguments, 'arr and num'
 // and multiplies each arr value into by num and returns an array of the values.
+function recursiveMultiplier(arr, num, index = 0, newArr = []){
+  if(index < arr.length){
+    newArr.push(arr[index]*num);
+    index+=1;
+    return recursiveMultiplier(arr, num, index, newArr)
+  }else return newArr;
+}
+
 
 
 
 // 7. Write a function 'recursiveReverse' that takes an array and uses recursion
 // to return its contents in reverse
-
+function recursiveReverse(arr, newArr = []) {
+  if(arr.length > 0){
+    newArr.push(...arr.splice(-1));
+    return recursiveReverse(arr, newArr);
+  } else return newArr;
+}
